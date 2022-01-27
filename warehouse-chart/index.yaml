@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  warehouse-chart:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-01-27T14:45:59.354907812Z"
+    description: A Helm chart for Warehouse MicroService in Quarkus-Bookstore project
+    digest: 2a89afe37276ad065b4d912fd32a629a16b5e8b277131d77c687b8d259089220
+    name: warehouse-chart
+    type: application
+    urls:
+    - https://github.com/obryan5598/quarkus-bookstore-helm-chart/warehouse-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-01-27T14:45:59.354234651Z"
