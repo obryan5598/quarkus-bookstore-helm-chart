@@ -9,6 +9,6 @@ entries:
     name: warehouse-chart
     type: application
     urls:
-    - https://github.com/obryan5598/quarkus-bookstore-helm-chart/warehouse-chart/warehouse-chart-0.1.0.tgz
+    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/warehouse-chart/warehouse-chart-0.1.0.tgz
     version: 0.1.0
 generated: "2022-01-27T14:45:59.354234651Z"
