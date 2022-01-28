@@ -1,0 +1,17 @@
+{{- if .Values.route.enabled -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "warehouse-chart.fullname" . }}-test-connection"
+  labels:
+    {{- include "warehouse-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: exposure-test
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+      command: ['curl']
+      args: ['{{ .Values.route.host }}/books/ISBN/9780399140020']
+  restartPolicy: Never
+{{- end }}
