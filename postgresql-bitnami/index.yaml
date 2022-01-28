@@ -60,6 +60,6 @@ entries:
     - https://github.com/bitnami/bitnami-docker-postgresql
     - https://www.postgresql.org/
     urls:
-    - https://github.com/obryan5598/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
+    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
     version: 10.16.2
 generated: "2022-01-28T21:11:14.299219337Z"
