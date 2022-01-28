@@ -24,10 +24,10 @@ global:
   ## @param global.postgresql.replicationPassword Replication user password (overrides `replication.password`)
   ##
   postgresql:
-    postgresqlDatabase: ""
-    postgresqlUsername: ""
+    postgresqlDatabase: "warehouse"
+    postgresqlUsername: "testUser"
     existingSecret: ""
-    postgresqlPassword: ""
+    postgresqlPassword: "testPassword"
     servicePort: ""
     replicationPassword: ""
 
@@ -310,7 +310,7 @@ extendedConfConfigMap: ""
 ##      #!/bin/sh
 ##      echo "Do something."
 ##
-initdbScripts: {}
+initdbScripts: {"setup.sh":"psql warehouse < /docker-entrypoint-initdb.d/setup.sql"}
 ## @param initdbScriptsConfigMap ConfigMap with scripts to be run at first boot
 ## NOTE: This will override initdbScripts
 ##
