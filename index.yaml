@@ -5,7 +5,7 @@ entries:
       category: Database
     apiVersion: v2
     appVersion: 11.14.0
-    created: "2022-01-29T20:45:38.956477948Z"
+    created: "2022-01-29T20:48:30.529733565Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
@@ -37,13 +37,13 @@ entries:
   warehouse-chart:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2022-01-29T20:45:38.966913369Z"
+    created: "2022-01-29T20:48:30.537061036Z"
     dependencies:
     - name: postgresql
       repository: https://obryan5598.github.io/quarkus-bookstore-helm-chart
       version: 10.16.2
     description: A Helm chart for Kubernetes
-    digest: 59d9397286bdff4875c793d1dce84c0f4a534847a8f8fbd5829447f053f2951d
+    digest: a344d9a689fe16e47af2cfc46553f935b7be7a07cdf9de00dbcbb372324ab197
     maintainers:
     - email: giovanni.astarita@tuta.io
       name: Giovanni Astarita
@@ -52,6 +52,6 @@ entries:
     - https://github.com/obryan5598/quarkus-bookstore/warehouse-quarkus
     type: application
     urls:
-    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/warehouse-chart/warehouse-chart-0.1.0.tgz
+    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/warehouse-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-29T20:45:38.951238833Z"
+generated: "2022-01-29T20:48:30.524533087Z"
