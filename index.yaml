@@ -40,7 +40,7 @@ entries:
     created: "2022-01-29T00:32:11.877308982Z"
     dependencies:
     - name: postgresql
-      repository: https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami
+      repository: https://obryan5598.github.io/quarkus-bookstore-helm-chart
       version: 10.16.2
     description: A Helm chart for Kubernetes
     digest: a9d445d3a569b42ba4b13c91f0a463eea74e72ce9fc3977c306ca166994f04cf

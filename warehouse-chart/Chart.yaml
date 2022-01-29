@@ -33,4 +33,4 @@ sources:
 dependencies:
 - name: postgresql
   version: "10.16.2"
-  repository: "https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami"
+  repository: "https://obryan5598.github.io/quarkus-bookstore-helm-chart"
