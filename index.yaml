@@ -1,27 +1,18 @@
 apiVersion: v1
 entries:
-  warehouse-chart:
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2022-01-27T14:45:59.354907812Z"
-    description: A Helm chart for Warehouse MicroService in Quarkus-Bookstore project
-    digest: 2a89afe37276ad065b4d912fd32a629a16b5e8b277131d77c687b8d259089220
-    name: warehouse-chart
-    type: application
-    urls:
-    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/warehouse-chart/warehouse-chart-0.1.0.tgz
-    version: 0.1.0
   postgresql:
   - annotations:
       category: Database
     apiVersion: v2
     appVersion: 11.14.0
-    created: "2022-01-28T21:11:14.303796202Z"
+    created: "2022-01-29T00:32:11.869934803Z"
     dependencies:
     - name: common
       repository: https://charts.bitnami.com/bitnami
+      version: 1.x.x
+    description: Chart for PostgreSQL, an object-relational database management system
       (ORDBMS) with an emphasis on extensibility and on standards-compliance.
-    digest: 04dab12f56aa224d60149a8a866997a4bccb25a49ff296c52e13c45cbd778241
+    digest: f49afb098e0fe46b760ba49bf554b35f94ac1095f1aef2e5b95c856915dd12d5
     home: https://github.com/bitnami/charts/tree/master/bitnami/postgresql
     icon: https://bitnami.com/assets/stacks/postgresql/img/postgresql-stack-220x234.png
     keywords:
@@ -41,6 +32,26 @@ entries:
     - https://github.com/bitnami/bitnami-docker-postgresql
     - https://www.postgresql.org/
     urls:
-    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
+    - https://github.com/obryan5598/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-bitnami/postgresql-10.16.2.tgz
     version: 10.16.2
-generated: "2022-01-28T20:50:36.758935464Z"
+  warehouse-chart:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2022-01-29T00:32:11.877308982Z"
+    dependencies:
+    - name: postgresql
+      repository: https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami
+      version: 10.16.2
+    description: A Helm chart for Kubernetes
+    digest: a9d445d3a569b42ba4b13c91f0a463eea74e72ce9fc3977c306ca166994f04cf
+    maintainers:
+    - email: giovanni.astarita@tuta.io
+      name: Giovanni Astarita
+    name: warehouse-chart
+    sources:
+    - https://github.com/obryan5598/quarkus-bookstore/warehouse-quarkus
+    type: application
+    urls:
+    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
+    version: 0.1.0
+generated: "2022-01-29T00:32:11.858295736Z"
