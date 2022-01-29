@@ -1,5 +1,8 @@
 # PostgreSQL Bitnami Chart
 
+The following README shows how to install the Postgres Chart (taken by Bitnami) from local source code.
+
+
 ## Lint of the chart
 ```
 helm lint --set postgresqlUsername=testUser --set postgresqlPassword=testPassword --set postgresqlDatabase=warehouse --set initdbScripts."setup\.sh"="psql warehouse < /docker-entrypoint-initdb\.d/setup\.sql" . --debug
