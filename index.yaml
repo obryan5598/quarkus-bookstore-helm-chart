@@ -32,7 +32,7 @@ entries:
     - https://github.com/bitnami/bitnami-docker-postgresql
     - https://www.postgresql.org/
     urls:
-    - https://github.com/obryan5598/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
+    - https://obryan5598.github.io/quarkus-bookstore-helm-chart/postgresql-bitnami/postgresql-10.16.2.tgz
     version: 10.16.2
   warehouse-chart:
   - apiVersion: v2
