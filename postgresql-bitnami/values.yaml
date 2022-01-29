@@ -26,7 +26,7 @@ global:
   postgresql:
     postgresqlDatabase: "warehouse"
     postgresqlUsername: "testUser"
-    existingSecret: "warehouse-chart-postgresql"
+    existingSecret: ""
     postgresqlPassword: "testPassword"
     servicePort: ""
     replicationPassword: ""
@@ -231,7 +231,7 @@ postgresqlPassword: "testPassword"
 ## e.g:
 ## existingSecret: secret
 ##
-existingSecret: "warehouse-chart-postgresql"
+existingSecret: ""
 ## @param usePasswordFile Mount PostgreSQL secret as a file instead of passing environment variable
 ##
 usePasswordFile: false
