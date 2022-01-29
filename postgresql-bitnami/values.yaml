@@ -321,10 +321,10 @@ initdbScriptsConfigMap: ""
 initdbScriptsSecret: ""
 ## @param initdbUser Specify the PostgreSQL username to execute the initdb scripts
 ##
-initdbUser: ""
+initdbUser: "testUser"
 ## @param initdbPassword Specify the PostgreSQL password to execute the initdb scripts
 ##
-initdbPassword: ""
+initdbPassword: "testPassword"
 
 ## @param containerPorts.postgresql PostgreSQL container port
 ##
