@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "postgresql.fullname" . }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "postgresql.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "postgresql.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: tcp-postgresql
+              containerPort: 5432
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: POSTGRESQL_USER
+              value: {{ .Values.postgresql.username }}
+            - name: POSTGRESQL_PASSWORD
+              value: {{ .Values.postgresql.password }}
+            - name: POSTGRESQL_DATABASE
+              value: {{ .Values.postgresql.database }}
+          {{- if (.Files.Glob "files/postgresql-start/*.{sh,sql,sql.gz}")  }}
+          volumeMounts:
+            - name: custom-init-scripts
+              mountPath: /opt/app-root/src/postgresql-start/
+          {{- end }}
+      {{- if (.Files.Glob "files/postgresql-start/*.{sh,sql,sql.gz}") }}
+      volumes:
+        - name: custom-init-scripts
+          configMap: 
+            name: init-db-cm
+      {{- end }}

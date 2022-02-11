@@ -1,34 +1,9 @@
-{{ if and (or (.Files.Glob "files/postgresql.conf") (.Files.Glob "files/pg_hba.conf") .Values.postgresqlConfiguration .Values.pgHbaConfiguration) (not .Values.configurationConfigMap) }}
 apiVersion: v1
+data:
+  init_db.sh: |
+    psql warehouse < /opt/app-root/src/postgresql-start/setup.sql
+  setup.sql: "DROP TABLE IF EXISTS BOOK;\n\nGRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO \"testUser\";\nGRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO \"testUser\";\n\nCREATE TABLE BOOK (     ID SERIAL PRIMARY KEY,\n\t\t   \tISBN VARCHAR(32) NOT NULL UNIQUE,\n                        TITLE VARCHAR(60) NOT NULL UNIQUE,\n                        AUTHOR VARCHAR(60) NOT NULL,\n                        PRICE DECIMAL (6,2) NOT NULL,\n\t\t\tQUANTITY INTEGER NOT NULL);\n\nINSERT INTO BOOK(ISBN, TITLE, AUTHOR, PRICE, QUANTITY) VALUES('9780671820862', 'Captain America: Holocaust For Hire', 'Joseph Silva', 29.90, 20);\nINSERT INTO BOOK(ISBN, TITLE, AUTHOR, PRICE, QUANTITY) VALUES('9780671820855', 'The Incredible Hulk: Cry of the Beast', 'Richard S. Meyers', 24.90, 30);\nINSERT INTO BOOK(ISBN, TITLE, AUTHOR, PRICE, QUANTITY) VALUES('9780671820893', 'Iron Man: And Call My Killer...MODOK!', 'William Rotsler', 20.90, 22);\nINSERT INTO BOOK(ISBN, TITLE, AUTHOR, PRICE, QUANTITY) VALUES('9780399140020', 'Spider-Man: The Venom Factor', 'Diane Duane', 18.90, 18);\n\nALTER TABLE BOOK OWNER TO \"testUser\";\n"
 kind: ConfigMap
 metadata:
-  name: {{ template "common.names.fullname" . }}-configuration
-  labels:
-  {{- include "common.labels.standard" . | nindent 4 }}
-  {{- if .Values.commonLabels }}
-  {{- include "common.tplvalues.render" ( dict "value" .Values.commonLabels "context" $ ) | nindent 4 }}
-  {{- end }}
-  {{- if .Values.commonAnnotations }}
-  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.commonAnnotations "context" $ ) | nindent 4 }}
-  {{- end }}
-  namespace: {{ .Release.Namespace }}
-data:
-{{- if (.Files.Glob "files/postgresql.conf") }}
-{{ (.Files.Glob "files/postgresql.conf").AsConfig | indent 2 }}
-{{- else if .Values.postgresqlConfiguration }}
-  postgresql.conf: |
-{{- range $key, $value := default dict .Values.postgresqlConfiguration }}
-    {{- if kindIs "string" $value }}
-    {{ $key | snakecase }} = '{{ $value }}'
-    {{- else }}
-    {{ $key | snakecase }} = {{ $value }}
-    {{- end }}
-{{- end }}
-{{- end }}
-{{- if (.Files.Glob "files/pg_hba.conf") }}
-{{ (.Files.Glob "files/pg_hba.conf").AsConfig | indent 2 }}
-{{- else if .Values.pgHbaConfiguration }}
-  pg_hba.conf: |
-{{ .Values.pgHbaConfiguration | indent 4 }}
-{{- end }}
-{{ end }}
+  creationTimestamp: null
+  name: init-db-cm
